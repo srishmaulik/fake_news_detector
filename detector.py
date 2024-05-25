@@ -10,17 +10,18 @@ from sklearn.linear_model import PassiveAggressiveClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 from pandas import DataFrame as df
 # Set up plotting styles
+
+# Set up plotting styles
 plt.style.use('ggplot')
 sns.color_palette("tab10")
 sns.set(context='notebook', style='darkgrid', font='sans-serif', font_scale=1, rc=None)
-matplotlib.rcParams['figure.figsize'] =[20,8]
+matplotlib.rcParams['figure.figsize'] = [20, 8]
 matplotlib.rcParams.update({'font.size': 15})
 matplotlib.rcParams['font.family'] = 'sans-serif'
 
 # Load datasets
-
-true_df = pd.read_csv('True.csv')
-fake_df = pd.read_csv('Fake.csv')
+true_df = pd.read_csv('/Users/srishmaulik/Desktop/fake_news_detector/True.csv')
+fake_df = pd.read_csv('/Users/srishmaulik/Desktop/fake_news_detector/Fake.csv')
 
 # Add labels
 true_df['label'] = 'REAL'
@@ -28,12 +29,10 @@ fake_df['label'] = 'FAKE'
 
 # Combine datasets
 df = pd.concat([true_df, fake_df])
-# df['label'] = df['label'].astype('category')  # Line 1
-# plt.title('The number of news: fake/real')
-# plt.show()
 
-# Plot the number of real and fake news
-sns.countplot(df.label)  
+# Ensure the label column is categorical
+df['label'] = df['label'].astype('category')
+
 # Display shape and first few rows
 print(df.shape)
 print(df.head())
@@ -43,7 +42,7 @@ labels = df.label
 print(labels.head())
 
 # Plot the number of real and fake news
-sns.countplot(df.label)
+sns.countplot(x='label', data=df)
 plt.title('The number of news: fake/real')
 plt.show()
 
