@@ -114,6 +114,7 @@ plot_confusion_matrix(cm, classes=['FAKE', 'REAL'], normalize=True,
 
 plt.show()
 
+
 # Load and preprocess the dataset
 # true_df = pd.read_csv('/Users/srishmaulik/Desktop/fake_news_detector/True.csv')
 # fake_df = pd.read_csv('/Users/srishmaulik/Desktop/fake_news_detector/Fake.csv')
